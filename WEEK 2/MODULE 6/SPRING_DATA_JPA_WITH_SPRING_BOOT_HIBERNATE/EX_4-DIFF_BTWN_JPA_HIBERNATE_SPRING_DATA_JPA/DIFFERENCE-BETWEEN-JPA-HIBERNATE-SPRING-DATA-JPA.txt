@@ -1,0 +1,86 @@
+                                       DIFFERENCE BETWEEN JPA, HIBERNATE AND SPRING DATA JPA
+
+1. JAVA PERSISTANCE API(JPA):
+
+(1) JSR 338 specification for persisting, reading, and managing data from Java objects to relational database tables.
+(2) Does not contain a concrete implementation of the specification — it only defines interfaces, annotations, and             rules.
+(3) Hibernate is one of the popular implementations of JPA.
+
+2. HIBERNATE:
+
+(1) An ORM (Object-Relational Mapping) tool that implements the JPA specification.
+(2) Maps Java domain objects to relational database tables and provides its own native API (Session, Transaction) in       addition to supporting the standard JPA API.
+(3) Adds extra, Hibernate-specific features beyond what the JPA specification requires.
+
+3. SPRING DATA JPA:
+
+(1) Does not provide a JPA implementation of its own — it is not a JPA provider.
+(2) Adds another layer of abstraction on top of a JPA implementation provider such as Hibernate, reducing       boilerplate code.
+(3) Manages transactions declaratively using the @Transactional annotation.
+(4) Can generate queries automatically from repository method names
+
+4. RELATIONSHIP BETWEEN JPA, HIBERNATE AND SPRING DATA JPA:
+
+JPA (Specification)  →  implemented by  →  Hibernate (ORM Implementation)  →  abstracted by  →  Spring Data JPA (Abstraction Layer)
+
+5. CODE COMPARISON:
+
+The below snippets shows how the same operation (create employee) is written using Hibernate vs Spring Data JPA.
+
+HIBERNATE SNIPPET:
+
+public Integer addEmployee(Employee employee) {
+    Session session = factory.openSession();
+    Transaction tx = null;
+    Integer employeeID = null;
+ 
+    try {
+        tx = session.beginTransaction();
+        employeeID = (Integer) session.save(employee);
+        tx.commit();
+    } catch (HibernateException e) {
+        if (tx != null) tx.rollback();
+        e.printStackTrace();
+    } finally {
+        session.close();
+    }
+    return employeeID;
+}
+
+EXPLANATION:
+
+Using Hibernate requires the developer to:
+(1) Open a session.
+(2) Begin a transaction.
+(3) Save the entity.
+(4) Commit or roll back the transaction.
+(5) Handle exceptions.
+(6) Close the session.
+This results in more boilerplate code.
+
+SPRING DATA JPA
+
+EmployeeRepository.java
+
+public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
+
+}
+
+EmployeeService.java
+
+@Autowired
+private EmployeeRepository employeeRepository;
+
+@Transactional
+public void addEmployee(Employee employee) {
+    employeeRepository.save(employee);
+}
+
+EXPLANATION:
+
+With Spring Data JPA:
+(1) Repository implementation is generated automatically.
+(2) CRUD methods such as save() are already available.
+(3) Transaction management is handled using @Transactional.
+(4) Session and transaction management are managed internally by the JPA provider (Hibernate).
+This significantly reduces the amount of code compared to Hibernate.
