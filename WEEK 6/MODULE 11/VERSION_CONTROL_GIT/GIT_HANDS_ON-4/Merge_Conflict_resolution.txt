@@ -1,0 +1,233 @@
+HANDS-ON 4 MERGE CONFLICT RESOLUTION
+
+1. Create new branch:
+
+git branch GitWork
+
+--switch to it :
+
+git checkout GitWork
+
+Switched to branch 'GitWork'
+
+2. Create hello.xml file:
+
+echo ^<message^>Hello from GitWork^</message^> > hello.xml
+
+3. Check status:
+
+git status
+
+On branch GitWork
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        hello.xml
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+4. Commit changes:
+
+-- add file:
+
+git add hello.xml
+
+git commit -m "Added hello.xml in GitWork"
+[GitWork c090bce] Added hello.xml in GitWork
+ 1 file changed, 1 insertion(+)
+ create mode 100644 hello.xml
+
+5. Switch back to master:
+
+git checkout master
+
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+
+6. Create same file with different content:
+
+echo ^<message^>Hello from Master^</message^> > hello.xml
+
+7. Commit changes:
+
+-- add file:
+
+git add hello.xml
+
+git commit -m "Added hello.xml in master"
+
+[master 7c1250e] Added hello.xml in master
+ 1 file changed, 1 insertion(+)
+ create mode 100644 hello.xml
+
+8. View commit graph:
+
+git log --oneline --graph --decorate --all
+
+* 7c1250e (HEAD -> master) Added hello.xml in master
+| * c090bce (GitWork) Added hello.xml in GitWork
+|/
+* 3bc3f6d (origin/master) Added branch.txt in GitNewBranch
+* 2908692 Added .gitignore file
+* 54066d3 Added welcome file
+
+9. Compare branches:
+
+git diff master GitWork
+
+diff --git a/hello.xml b/hello.xml
+index 2dc3e2b..6b92710 100644
+--- a/hello.xml
++++ b/hello.xml
+@@ -1 +1 @@
+-<message>Hello from Master</message>
++<message>Hello from GitWork</message>
+
+10. Merge GitWork into master:
+
+git merge GitWork
+
+Auto-merging hello.xml
+CONFLICT (add/add): Merge conflict in hello.xml
+Automatic merge failed; fix conflicts and then commit the result.
+
+11. Resolve conflict
+
+-- In vs code open hello.xml and add:
+
+<message>Hello from Master and GitWork</message>
+
+12. Mark conflict as resolved:
+
+git add hello.xml
+
+13. Commit merge:
+
+git commit -m "Resolved merge conflict in hello.xml"
+
+[master f792e04] Resolved merge conflict in hello.xml
+
+14. Ignore backup files:
+
+git add .gitignore
+
+git commit -m "Updated .gitignore"
+
+15. List branches:
+
+git branch
+
+  GitWork
+* master
+
+16. Delete merged branch:
+
+git branch -d GitWork
+
+Deleted branch GitWork (was c090bce).
+
+17. View final commit history:
+
+git log --oneline --graph --decorate
+
+* af20b04 (HEAD -> master) Resolved merge conflict in hello.xml
+*   f792e04 Resolved merge conflict in hello.xml
+|\
+| * c090bce Added hello.xml in GitWork
+* | 7c1250e Added hello.xml in master
+|/
+* 3bc3f6d (origin/master) Added branch.txt in GitNewBranch
+* 2908692 Added .gitignore file
+* 54066d3 Added welcome file
+
+18. Push changes in GitHub:
+
+git push origin master
+Enumerating objects: 13, done.
+Counting objects: 100% (13/13), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (9/9), done.
+Writing objects: 100% (12/12), 1.17 KiB | 171.00 KiB/s, done.
+Total 12 (delta 4), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (4/4), completed with 1 local object.
+   
+
+
+
+GitHub Repository Link for GitDemo:  https://github.com/PradhakshinSaravanakumar/Gitdemo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

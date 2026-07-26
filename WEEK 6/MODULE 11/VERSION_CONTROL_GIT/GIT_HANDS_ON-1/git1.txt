@@ -1,0 +1,132 @@
+1. Verify Git Installation:
+
+git --version
+
+git version 2.51.0.windows.1
+
+2. Configure Git:
+
+git config --global user.name "Pradhakshina"
+git config --global user.email "prdhu@gmail.com"
+
+3. Verify Configuration:
+
+git config --global --list
+
+user.email=prdhu@gmail.com
+user.name=Pradhakshina
+safe.directory=*
+core.longpaths=true
+
+4. Configure Notepad++:
+
+notepad++
+
+git config --global core.editor "notepad++"
+git config --global -e
+
+5. Create a project:
+
+mkdir GitDemo
+
+cd GitDemo
+
+6. Initialize Git:
+
+git init
+Initialized empty Git repository in 
+
+7. Check hidden files:
+dir /a
+ Volume in drive C has no label.
+ Volume Serial Number is E62B-08E2
+
+ Directory of C:\Users\ADMIN\OneDrive\Desktop\DN 5.0 HANDS_ON\WEEK 6\MODULE 11\VERSION_CONTROL_GIT\GIT_HANDS_ON-1\GitDemo
+
+24-07-2026  11:35    <DIR>          .
+24-07-2026  11:35    <DIR>          ..
+24-07-2026  11:35    <DIR>          .git
+               0 File(s)              0 bytes
+               3 Dir(s)  27,523,432,448 bytes free
+
+8. Create a File:
+
+echo "Welcome to Git" > welcome.txt
+
+9. Verify File:
+
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is E62B-08E2
+
+Directory of C:\Users\ADMIN\OneDrive\Desktop\DN 5.0 HANDS_ON\WEEK 6\MODULE 11\VERSION_CONTROL_GIT\GIT_HANDS_ON-1\GitDemo
+
+24-07-2026  11:37    <DIR>          .
+24-07-2026  11:37    <DIR>          ..
+24-07-2026  11:37                19 welcome.txt
+               1 File(s)             19 bytes
+               2 Dir(s)  27,523,366,912 bytes free
+
+10. View File Content:
+
+type welcome.txt
+"Welcome to Git"
+
+11. Check Status:
+
+git status
+
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   welcome.txt
+
+12. Add file to Staging:
+
+git commit -m "Added welcome file"
+[master (root-commit) 54066d3] Added welcome file
+ 1 file changed, 1 insertion(+)
+ create mode 100644 welcome.txt
+
+git status
+
+On branch master
+nothing to commit, working tree clean
+
+
+13. Connecting to local git repository:
+
+git remote add origin https://github.com/PradhakshinSaravanakumar/Gitdemo.git
+
+--To verify
+
+git remote -v
+origin  https://github.com/PradhakshinSaravanakumar/Gitdemo.git (fetch)
+origin  https://github.com/PradhakshinSaravanakumar/Gitdemo.git (push)
+
+14. Push to GitHub:
+
+git push -u origin master
+
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 238 bytes | 59.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/PradhakshinSaravanakumar/Gitdemo.git
+ * [new branch]      master -> master
+branch 'master' set up to track 'origin/master'.
+
+15. Pull repository:
+
+git pull origin master
+
+From https://github.com/PradhakshinSaravanakumar/Gitdemo
+ * branch            master     -> FETCH_HEAD
+Already up to date.
+
+
+
+GitHub Repository Link for GitDemo:  https://github.com/PradhakshinSaravanakumar/Gitdemo

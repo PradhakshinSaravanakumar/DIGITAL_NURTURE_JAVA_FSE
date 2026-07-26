@@ -1,0 +1,33 @@
+HANDS-ON 5 CLEAN UP AND PUSH TO REMOTE REPOSITORY
+
+1. Verify repository is clean:
+
+git status
+
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+
+2. List all branches:
+
+git branch
+
+* master
+
+3. Pull latest changes from remote repository:
+
+git pull origin master
+From https://github.com/PradhakshinSaravanakumar/Gitdemo
+ * branch            master     -> FETCH_HEAD
+Already up to date.
+
+4. Push local changes to remote repository:
+
+git push origin master
+
+Everything up-to-date
+
+
+
+GitHub Repository Link for GitDemo:  https://github.com/PradhakshinSaravanakumar/Gitdemo

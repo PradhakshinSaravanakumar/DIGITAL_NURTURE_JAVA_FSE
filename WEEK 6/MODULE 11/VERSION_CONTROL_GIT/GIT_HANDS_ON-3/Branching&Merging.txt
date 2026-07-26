@@ -1,0 +1,119 @@
+HANDS-ON 3 BRANCHING AND MERGING
+
+1. Create a new branch:
+
+git branch GitNewBranch
+
+2. View all branches:
+
+git branch
+
+  GitNewBranch
+* master
+
+3. Switch to new branch:
+
+git checkout GitNewBranch
+
+Switched to branch 'GitNewBranch'
+
+4. Verify current branch:
+
+git branch
+
+* GitNewBranch
+  master
+
+5. Create new file:
+
+echo This file is created in GitNewBranch > branch.txt
+
+6. Check Status:
+
+git status
+
+On branch GitNewBranch
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        branch.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+7. Add file:
+
+git add branch.txt
+
+8. Commit Changes:
+
+git commit -m "Added branch.txt in GitNewBranch"
+
+[GitNewBranch 3bc3f6d] Added branch.txt in GitNewBranch
+ 1 file changed, 1 insertion(+)
+ create mode 100644 branch.txt08:14 PM 26-07-2026
+
+9. Switch back to master:
+
+git checkout master
+
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+
+10. Compare Branches:
+
+git diff master GitNewBranch
+
+diff --git a/branch.txt b/branch.txt
+new file mode 100644
+index 0000000..319a3b0
+--- /dev/null
++++ b/branch.txt
+@@ -0,0 +1 @@
++This file is created in GitNewBranch
+
+11. Merge the branch:
+
+git merge GitNewBranch
+
+Updating 2908692..3bc3f6d
+Fast-forward
+ branch.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 branch.txt
+
+12. View Commit History
+
+git log --oneline --graph --decorate
+
+* 3bc3f6d (HEAD -> master, GitNewBranch) Added branch.txt in GitNewBranch
+* 2908692 (origin/master) Added .gitignore file
+* 54066d3 Added welcome file
+
+13. Delete branch:
+
+git branch -d GitNewBranch
+
+Deleted branch GitNewBranch (was 3bc3f6d).
+
+14. Verify Branch:
+
+git branch
+
+* master
+
+15. Push the Changes to GitHub:
+
+git push origin master
+
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 366 bytes | 183.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/PradhakshinSaravanakumar/Gitdemo.git
+   2908692..3bc3f6d  master -> master
+
+
+
+
+GitHub Repository Link for GitDemo:  https://github.com/PradhakshinSaravanakumar/Gitdemo
